@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Корни роста</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --soil:#130E13; --loam:#1E161D; --loam2:#2A1F28; --line:#3A2C37;
+  --ink:#F3EAEE; --ink2:#C9B9C2; --ink3:#8E7A87;
+  --peony:#FF7BA5; --pollen:#F2C46D; --sage:#9DBFA8; --wilt:#6E6168;
+  --display:'Unbounded','Onest',system-ui,sans-serif;
+  --body:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+html{background:var(--soil)}
+body{background:var(--soil);color:var(--ink);font:400 16px/1.55 var(--body);padding-inline:clamp(16px,4vw,56px);overflow-x:hidden}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--pollen);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto}
+.eyebrow{font:500 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+h2{font:300 clamp(30px,4.4vw,56px)/1.05 var(--display);letter-spacing:-.02em;margin:10px 0 14px;text-wrap:balance}
+h2 b{font-weight:700;color:var(--peony)}
+.lede{color:var(--ink2);max-width:62ch;font-size:17px}
+/* ---------- hero ---------- */
+.hero{position:relative;margin-inline:calc(-1*clamp(16px,4vw,56px));height:min(820px,max(640px,92vh));overflow:hidden}
+#garden{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-copy{position:absolute;left:clamp(16px,4vw,56px);top:clamp(28px,6vh,64px);max-width:620px;pointer-events:none}
+.hero-copy .eyebrow{color:var(--ink2)}
+.hero h1{font:200 clamp(44px,8.2vw,112px)/.92 var(--display);letter-spacing:-.035em;margin:14px 0 18px}
+.hero h1 b{font-weight:700;display:block;color:var(--peony);text-shadow:0 0 40px rgba(255,123,165,.35)}
+.hero p{color:var(--ink2);max-width:46ch;margin:0}
+.hero-legend{position:absolute;right:clamp(16px,4vw,56px);top:clamp(28px,6vh,64px);display:flex;flex-direction:column;gap:8px;font:400 12px var(--mono);color:var(--ink2);text-align:right}
+.hero-legend span{display:inline-flex;gap:8px;align-items:center;justify-content:flex-end}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.ember-note{position:absolute;left:clamp(16px,4vw,56px);bottom:18px;font:400 12px var(--mono);color:var(--ink3);max-width:52ch}
+.ground-label{position:absolute;right:clamp(16px,4vw,56px);bottom:18px;font:400 12px var(--mono);color:var(--ink3)}
+/* ---------- context ---------- */
+section{padding-block:clamp(56px,9vw,110px)}
+.ctx{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,72px);align-items:end}
+.ctx-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cn{border-top:1px solid var(--line);padding-top:14px}
+.cn .v{font:200 clamp(34px,4vw,50px)/1 var(--display);letter-spacing:-.03em}
+.cn .v.up{color:var(--pollen)}.cn .v.down{color:var(--wilt)}
+.cn .l{font-size:13.5px;color:var(--ink2);margin-top:8px}
+.legend-row{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;padding-top:18px;border-top:1px dashed var(--line);font-size:14px;color:var(--ink2)}
+.legend-row b{color:var(--ink)}
+.rel{font:600 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px 4px;border-radius:3px;white-space:nowrap}
+.rel.gir{background:var(--sage);color:var(--soil)}
+.rel.press{border:1px solid var(--sage);color:var(--sage)}
+.rel.claim{border:1px dashed var(--ink3);color:var(--ink2)}
+/* ---------- cases ---------- */
+.group-h{display:flex;align-items:baseline;gap:16px;margin:64px 0 8px;flex-wrap:wrap}
+.group-h h3{font:500 20px var(--display);margin:0;letter-spacing:-.01em}
+.group-h .gl{color:var(--ink3);font-size:14px}
+.case{display:grid;grid-template-columns:minmax(210px,.9fr) 1.35fr 1fr;gap:clamp(18px,3vw,40px);padding:34px 0;border-top:1px solid var(--line);position:relative}
+.case:hover .big{text-shadow:0 0 32px color-mix(in srgb,var(--c) 45%,transparent)}
+.big{font:200 clamp(52px,7vw,92px)/.9 var(--display);letter-spacing:-.045em;color:var(--c);transition:text-shadow .4s}
+.metric{font:400 12px var(--mono);color:var(--ink3);margin-top:10px;letter-spacing:.02em}
+.who{margin-top:18px}
+.who .n{font:700 22px/1.15 var(--display);letter-spacing:-.01em}
+.who .p{font-size:13.5px;color:var(--ink2);margin-top:4px}
+.flags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.story{color:var(--ink2);font-size:15.5px}
+.story strong{color:var(--ink);font-weight:500}
+.spark{margin-top:16px;max-width:100%}
+.spark svg{display:block;width:100%;height:auto;overflow:visible}
+.roots-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.roots-list li{display:grid;grid-template-columns:16px 1fr;gap:10px;font-size:14px;color:var(--ink2);line-height:1.4}
+.roots-list li i{width:10px;height:10px;border-radius:50%;margin-top:5px;border:1.5px solid var(--c);display:block}
+.roots-list li.ok i{background:var(--c);box-shadow:0 0 10px color-mix(in srgb,var(--c) 60%,transparent)}
+.roots-list li b{color:var(--ink);font-weight:500}
+.caveat{margin-top:14px;font-size:13px;color:var(--ink3);border-left:2px solid var(--wilt);padding-left:10px}
+.srcs{margin-top:10px;font:400 11.5px/1.6 var(--mono);color:var(--ink3)}
+.srcs a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--line);margin-right:10px;white-space:nowrap}
+.srcs a:hover{color:var(--pollen);border-color:var(--pollen)}
+.wilted{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}
+.wl{border-top:1px solid var(--line);padding-top:14px;font-size:14px;color:var(--ink2)}
+.wl .v{font:200 36px/1 var(--display);color:var(--wilt);letter-spacing:-.03em}
+.wl .n{font:500 15px var(--display);color:var(--ink);margin:8px 0 4px}
+/* ---------- roots climax ---------- */
+.climax{position:relative}
+.climax h2{font-size:clamp(34px,5.6vw,72px)}
+.rootbox{overflow-x:auto;margin-top:34px;margin-inline:calc(-1*clamp(16px,4vw,56px));padding-inline:clamp(16px,4vw,56px)}
+#roots{display:block;min-width:900px;width:100%;height:auto}
+.verdict{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);margin-top:44px}
+.verdict p{margin:0;color:var(--ink2);font-size:16.5px}
+.verdict p b{color:var(--ink);font-weight:500}
+.odd{border:1px solid var(--line);border-radius:2px;padding:22px 24px;background:linear-gradient(180deg,var(--loam),transparent)}
+.odd .eyebrow{color:var(--pollen)}
+/* ---------- profit ---------- */
+.profit{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(24px,5vw,64px);align-items:center}
+#scatter{display:block;width:100%;height:auto;overflow:visible}
+/* ---------- penza ---------- */
+.moves{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:34px}
+.mv{border-top:2px solid var(--peony);padding-top:16px}
+.mv .k{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--peony)}
+.mv h4{font:500 19px/1.2 var(--display);margin:10px 0 8px;letter-spacing:-.01em}
+.mv p{margin:0;font-size:14.5px;color:var(--ink2)}
+.mystery{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center;padding:28px 0;border-block:1px solid var(--line)}
+.mystery .v{font:200 clamp(44px,6vw,80px)/1 var(--display);color:var(--pollen);letter-spacing:-.04em}
+.mystery p{margin:0;color:var(--ink2);max-width:60ch}
+.coda{text-align:left;padding-block:clamp(80px,14vw,160px) clamp(60px,10vw,120px)}
+.coda p{font:200 clamp(30px,5vw,64px)/1.1 var(--display);letter-spacing:-.03em;margin:0;max-width:18ch}
+.coda p b{font-weight:500;color:var(--peony)}
+.coda .sig{margin-top:22px;font:400 12px var(--mono);color:var(--ink3)}
+.sources{padding-bottom:64px;border-top:1px solid var(--line)}
+.sources ol{columns:2;column-gap:40px;padding-left:22px;font-size:13px;color:var(--ink3)}
+.sources li{margin-bottom:6px;break-inside:avoid}
+.sources a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--line)}
+.sources a:hover{color:var(--pollen)}
+@media (max-width:900px){
+  .ctx,.verdict,.profit{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr}
+  .moves,.wilted{grid-template-columns:1fr 1fr}
+  .hero-legend{display:none}
+  .sources ol{columns:1}
+}
+@media (max-width:520px){
+  .moves,.wilted,.ctx-nums{grid-template-columns:1fr}
+  .mystery{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head><body>
+
+<header class="hero" aria-label="Десять стеблей роста">
+  <canvas id="garden" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+    <div class="eyebrow">10 цветочных бизнесов · 2025 против 2024 · Россия и мир</div>
+    <h1>Кто вырос<b>за один год</b></h1>
+    <p>Высота каждого стебля — рост выручки за год. Над землёй видно, насколько компания выросла. Под землёй — за счёт чего. Нажмите на стебель, чтобы перейти к компании.</p>
+  </div>
+  <div class="hero-legend">
+    <span>взрыв, от +50% за год <i class="dot" style="background:var(--peony)"></i></span>
+    <span>долгий разгон, ×2–3 за 2–3 года <i class="dot" style="background:var(--pollen)"></i></span>
+    <span>ускорение, +20–40% <i class="dot" style="background:var(--sage)"></i></span>
+  </div>
+  <div class="ember-note">Каждая искра — 1 млн ₽ прироста выручки пяти российских компаний за 2025 год: всего 558 млн ₽ по отчётности ФНС.</div>
+</header>
+
+<main class="wrap">
+  <section class="ctx" aria-labelledby="ctx-h">
+    <div>
+      <div class="eyebrow">Почва · рынок России в 2025 году</div>
+      <h2 id="ctx-h">Магазинов меньше, <b>продаж больше</b></h2>
+      <p class="lede">Рынок вырос, а точек стало меньше. Значит, выросшие забрали покупателей у закрывшихся. Десять компаний ниже — те, кто забирал больше всех. Честно о выборке: набралось 6 настоящих «взрывов» с ростом от +50% за год, 2 долгих разгона и 2 ускорения. Натягивать остальные до взрыва мы не стали.</p>
+    </div>
+    <div class="ctx-nums">
+      <div class="cn"><div class="v up">+12%</div><div class="l">продажи цветов в деньгах, январь–ноябрь 2025 (Эвотор) <a href="https://www.kommersant.ru/doc/8271080">[К]</a></div></div>
+      <div class="cn"><div class="v down">−2,5%</div><div class="l">число цветочных точек; в крупных городах закрылось до 25% <a href="https://rb.ru/news/v-krupnyh-gorodah-zakrylos-do-25-cvetochnyh-magazinov-za-2025-god-pri-etom-prodazhi-vyrosli-na-12/">[RB]</a></div></div>
+      <div class="cn"><div class="v up">+25%</div><div class="l">онлайн-спрос за январь–октябрь 2025; офлайн +14% <a href="https://www.kommersant.ru/doc/8271080">[К]</a></div></div>
+    </div>
+  </section>
+  <div class="legend-row" aria-label="Надёжность цифр">
+    <span><span class="rel gir">ФНС</span> &nbsp;бухотчётность из ГИР БО — самый надёжный уровень</span>
+    <span><span class="rel press">пресса</span> &nbsp;отчётность или данные компании, пересказанные СМИ</span>
+    <span><span class="rel claim">со слов</span> &nbsp;заявление компании без отчётности</span>
+    <span>● подтверждённый фактор &nbsp; ○ наш вывод</span>
+  </div>
+
+  <div id="cases"></div>
+
+  <section aria-labelledby="w-h" style="padding-top:40px">
+    <div class="eyebrow">Для контраста · кто завял</div>
+    <h2 id="w-h" style="font-size:clamp(26px,3.4vw,40px)">Подписка и своя логистика <b style="color:var(--wilt)">без скорости</b></h2>
+    <div class="wilted">
+      <div class="wl"><div class="v">−8,2%</div><div class="n">Freddie's Flowers, UK</div>выручка за год по август 2024; с 2022 года — минус треть; штат −26% <div class="srcs"><a href="https://www.uktech.news/tech-hubs/london/freddies-flowers-cuts-26-of-staff-after-revenues-fall-again-20241211">UKTN</a></div></div>
+      <div class="wl"><div class="v">−8%</div><div class="n">1-800-Flowers, США</div>выручка 2025 ф.г. $1,69 млрд; чистый убыток $200 млн <div class="srcs"><a href="https://www.businesswire.com/news/home/20250904202543/en/1-800-FLOWERS.COM-Inc.-Reports-Fiscal-2025-Fourth-Quarter-and-Year-End-Results">BusinessWire</a></div></div>
+      <div class="wl"><div class="v">−50%</div><div class="n">Colvin, Испания</div>штата после процедуры с кредиторами; компанию продали фонду <div class="srcs"><a href="https://www.viaempresa.cat/es/empresa/mejor-startup-ano-despedir-mitad-plantilla-este-es-presente-colvin_2212950_102.html">VIA Empresa</a></div></div>
+      <div class="wl"><div class="v">≈0%</div><div class="n">The Bouqs Co., США</div>выручка $90,3 млн против ~$91 млн; растёт только там, где открыли свои магазины <div class="srcs"><a href="https://www.modernretail.co/operations/bouqs-launches-5m-crowdfunding-raise-to-support-future-store-openings/">Modern Retail</a></div></div>
+    </div>
+  </section>
+
+  <section class="climax" aria-labelledby="r-h">
+    <div class="eyebrow">Под землёй · семь корней роста</div>
+    <h2 id="r-h">Растут те, у кого <b>своя закупка</b> или&nbsp;<b>скорость</b></h2>
+    <p class="lede">Каждый столбец — компания, каждый пласт — фактор роста. Светящийся узел — фактор подтверждён источником, полый — наш вывод по косвенным признакам.</p>
+    <div class="rootbox"><svg id="roots" role="img" aria-label="Матрица факторов роста по десяти компаниям"></svg></div>
+    <div class="verdict">
+      <p><b>Своя закупка есть у 7 из 10 (у двух — по нашему выводу), скорость — тоже у 7 из 10.</b> Прямые контракты с теплицами, свой опт, свои поля — это то, что даёт магазину цену и свежесть. Скорость — это круглосуточные магазины, доставка за час, быстрая доставка через приложения. Одно из двух есть у девяти компаний из десяти.</p>
+      <div class="odd"><div class="eyebrow">Исключение, которое подтверждает правило</div><p style="margin-top:8px">По нашим данным, только у <b>Bloom &amp; Wild</b> нет ни своей закупки, ни скорости: букет едет почтой в коробке. И он растёт медленнее всех в десятке — +21%, и всё ещё ниже пика 2021 года.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="p-h">
+    <div class="profit">
+      <div>
+        <div class="eyebrow">Рост ≠ прибыль · пять российских компаний, ФНС</div>
+        <h2 id="p-h">Рост на закупке <b>кормит</b>. Рост на&nbsp;доставке — <b style="color:var(--wilt)">ест</b></h2>
+        <p class="lede">«Жарден» и RuRose выросли на 50% с лишним и зарабатывают 19–31% с каждого рубля — за них работает своя закупка. AzaliaNow почти удвоила выручку, но ушла в убыток: бесплатная доставка за 3 часа и маркетинг стоят денег. Это наш вывод по структуре бизнеса, компании его не комментировали.</p>
+      </div>
+      <svg id="scatter" viewBox="0 0 640 420" role="img" aria-label="Рост выручки против рентабельности по чистой прибыли"></svg>
+    </div>
+  </section>
+
+  <section aria-labelledby="pz-h">
+    <div class="eyebrow">Послевкусие · что прорастёт в Пензе</div>
+    <h2 id="pz-h">Четыре корня, которые <b>по силам маленькому магазину</b></h2>
+    <div class="moves">
+      <div class="mv"><div class="k">Закупка</div><h4>Российская роза напрямую</h4><p>Доля российских цветов в рознице выросла до 25% (два года назад — 12,5%). RuRose берёт розы у трёх тепличных комбинатов напрямую — и прибыль у неё выросла втрое.</p></div>
+      <div class="mv"><div class="k">Скорость</div><h4>Доставка за час по городу</h4><p>«Бери Дари» из Калуги — пять магазинов, бесплатная доставка за час по центру — удвоили выручку. Калуга — областной центр меньше Пензы.</p></div>
+      <div class="mv"><div class="k">Канал</div><h4>Выйти туда, где растёт онлайн</h4><p>Онлайн-спрос +25% против +14% офлайн. Оборот Flowwow за 2025 год — 24 млрд ₽ (+39%). Запуск там уже в планах магазина.</p></div>
+      <div class="mv"><div class="k">Повтор</div><h4>Частая покупка вместо праздничной</h4><p>Hoovu растёт на цветах для ежедневного обряда и подписке. Для Пензы аналог — офисы и «цветы для себя» раз в неделю.</p></div>
+    </div>
+    <div class="mystery">
+      <div class="v">+94%</div>
+      <p><b style="color:var(--ink);font-weight:500">Загадка рядом.</b> В Пензе есть ООО «ФФТ» (ИНН 5834113138): выручка 46,4 → 89,9 млн ₽ за 2025 год по отчётности ФНС. Какой это бренд, установить не удалось. Кто-то в вашем городе уже растёт взрывом — стоит узнать, кто. <a href="https://firmoteka.ru/5834113138">firmoteka</a></p>
+    </div>
+  </section>
+
+  <section class="coda">
+    <p>Рост видно <b>над землёй</b>. Причины — всегда под ней.</p>
+    <div class="sig">Исследование 22.09.2026 · отчётность ФНС за 2025 год взята из перепечаток ГИР БО (firmoteka, egrul.org) — перед решениями сверьте на bo.nalog.gov.ru</div>
+  </section>
+
+  <section class="sources" aria-labelledby="s-h" style="padding-top:40px">
+    <div class="eyebrow" id="s-h">Источники</div>
+    <ol id="srclist"></ol>
+  </section>
+</main>
+
+<script>
+const C={peony:'#FF7BA5',pollen:'#F2C46D',sage:'#9DBFA8',wilt:'#6E6168',ink:'#F3EAEE',ink2:'#C9B9C2',ink3:'#8E7A87',line:'#3A2C37',soil:'#130E13'};
+const TYPE={boom:{c:C.peony,t:'взрыв',h:'Взрыв',d:'рост от +50% за один год'},run:{c:C.pollen,t:'разгон',h:'Долгий разгон',d:'×2–3 за два-три года'},acc:{c:C.sage,t:'ускорение',h:'Ускорение',d:'+20–40% — сильно, но не взрыв'}};
+const F=[['A','Своя закупка','теплицы, свой опт, фермы напрямую'],['B','Скорость','24/7, доставка за 1–3 часа, быстрая доставка'],['C','Новые точки и города','магазины, регионы, страны'],['D','Цифровой канал','своё приложение, платформа, конструктор'],['E','Шире цветов','подарки, растения, озеленение'],['F','Повторные покупки','подписка, лояльность, кэшбэк'],['G','Вложения в бренд','реклама, ТВ-шоу, бренд-кампании']];
+// factor status: 1 = confirmed, 0.5 = inference
+const CASES=[
+ {id:'udora',name:'Udora',place:'Дубай → 50+ стран',geo:'мир',type:'boom',g:'+129%',gn:129,metric:'GMV 2025 к 2024 · $9,84 млн',rel:'claim',
+  series:[4.3,9.84],labels:['2024','2025'],unit:'$ млн, GMV',
+  story:'<strong>Маркетплейс местных флористов без своих складов</strong> (бывший Flowwow International, с апреля 2026 — отдельная компания). Растёт вместе с числом подключённых магазинов: в ОАЭ их стало на 66,5% больше, в Германии GMV +346%, в Польше +287%.',
+  f:{B:1,C:1,D:1,E:1,F:1},fx:{B:'доставка в день заказа',C:'50+ стран, 1 500+ городов',D:'платформа 150 000+ товаров',E:'сладости, растения, подарки',F:'61,3% заказов в ОАЭ — повторные'},
+  caveat:'Данные компании в пересказе прессы, аудированной отчётности нет. База низкая: десятки процентов на малых объёмах.',
+  src:[['EU-Startups','https://www.eu-startups.com/2026/04/gifting-marketplace-flowwow-rebrands-to-udora-separating-from-russian-business-and-raising-e8-5-million-for-european-growth/'],['Zawya','https://www.tradingview.com/news/reuters.com,2026-04-29:newsml_Zaw3c7jBs:0-zawya-after-raising-10mln-flowwow-relaunches-as-udora-to-scale-local-gifting-in-the-gcc/']]},
+ {id:'beri',name:'«Бери Дари»',place:'Калуга · ООО «ГИК»',geo:'РФ',type:'boom',g:'+102%',gn:102,metric:'выручка 2025 к 2024 · 82,5 млн ₽',rel:'gir',
+  series:[67.5,null,5.2,33.7,40.9,82.5],labels:['2020','2021','2022','2023','2024','2025'],unit:'млн ₽',
+  story:'<strong>Свои теплицы с 2001 года</strong> плюс пять магазинов, интернет-магазин, опт, садовый центр и питомник. Бесплатная доставка за час по центру Калуги, скидка 15% за самовывоз.',
+  f:{A:1,B:1,C:0,E:1},fx:{A:'собственное выращивание + импорт',B:'доставка в течение часа',E:'садовый центр и питомник'},
+  caveat:'Самый ненадёжный «взрыв» в десятке: выручка ходила скачками (67,5 млн в 2020-м, 5,2 млн в 2022-м), в 2024 году сменился владелец. Возможен перенос оборота между юрлицами.',
+  src:[['firmoteka','https://firmoteka.ru/4027068691'],['egrul.org','https://egrul.org/fin/report.php?inn=4027068691'],['kupi-buket40.ru','https://kupi-buket40.ru/']]},
+ {id:'azalia',name:'AzaliaNow',place:'Москва · ООО «Пионфло»',geo:'РФ',type:'boom',g:'+90%',gn:90,metric:'выручка 2025 к 2024 · 100,5 млн ₽',rel:'gir',
+  series:[3.5,47.1,52.9,100.5],labels:['2022','2023','2024','2025'],unit:'млн ₽',
+  story:'<strong>Онлайн-доставка со своим приложением</strong> (в App Store с июля 2024). Бесплатная доставка в пределах МКАД за 3 часа, экспресс за 2 часа, 4 000 букетов, фото перед отправкой, оплата частями. Отдельное направление — озеленение офисов.',
+  f:{A:.5,B:1,D:1,E:1,G:.5},fx:{A:'закупка через свой опт «Азалия»',B:'2–3 часа по Москве',D:'своё приложение',E:'корпоративное озеленение',G:'рост, похоже, куплен маркетингом'},
+  caveat:'Выручка почти удвоилась, а прибыль 23,9 млн (2023) сменилась убытком −22,6 млн (2025). Одно юрлицо, вероятно, не равно всему бренду.',
+  src:[['firmoteka','https://firmoteka.ru/7714462099'],['egrul.org','https://egrul.org/fin/report.php?inn=7714462099'],['azalianow.ru','https://azalianow.ru/']]},
+ {id:'hoovu',name:'Hoovu Fresh',place:'Бангалор, Индия',geo:'мир',type:'boom',g:'+64%',gn:64,metric:'выручка 2024/25 ф.г. · ₹12,7 крор',rel:'press',
+  series:[7.7,12.7],labels:['2023/24','2024/25'],unit:'₹ крор',
+  story:'<strong>Цветы для ежедневного индуистского обряда — по подписке.</strong> Своя технология сохраняет свежесть 15 дней вместо 2–3, потери упали с 40–60% до 3%. Продаёт через продуктовые приложения с быстрой доставкой: BigBasket, Zepto, Swiggy.',
+  f:{A:1,B:1,D:1,F:1,G:1},fx:{A:'500+ фермеров напрямую',B:'приложения быстрой доставки',D:'свой сайт + маркетплейсы',F:'подписка, 150 000+ заказов в месяц',G:'эффект Shark Tank India'},
+  caveat:'Выручка по официальной отчётности в пересказе Inc42; второго независимого подтверждения нет.',
+  src:[['Inc42','https://inc42.com/company/hoovu-fresh/'],['Krishi Jagran','https://krishijagran.com/success-story/bengaluru-sisters-and-shark-tank-stars-revolutionizing-pooja-flower-industry-with-hoovu-fresh-earning-crores/']]},
+ {id:'jarden',name:'«Жарден»',place:'Екатеринбург · ООО «Жарден»',geo:'РФ',type:'boom',g:'+56%',gn:56,metric:'выручка 2025 к 2024 · 413,8 млн ₽',rel:'gir',
+  series:[265.1,413.8],labels:['2024','2025'],unit:'млн ₽',
+  story:'<strong>11 магазинов, 10 из них круглосуточные</strong>, доставка ещё в пять городов Урала, свой опт. По всей группе из трёх юрлиц — +63%, 720,6 млн ₽. Рентабельность ООО «Жарден» по чистой прибыли — около 31%, исключительно высокая для цветочной розницы.',
+  f:{A:.5,B:1,C:1},fx:{A:'свой опт (ОКВЭД 46.22)',B:'10 из 11 магазинов 24/7',C:'доставка в 5 городов Урала'},
+  caveat:'Две из трёх компаний группы созданы в декабре 2023 — вероятен перевод точек с ИП. Надёжнее всего рост одного ООО «Жарден»: +56%.',
+  src:[['firmoteka','https://firmoteka.ru/6670020123'],['egrul.org','https://egrul.org/fin/report.php?inn=6670020123'],['jarden.ru','https://jarden.ru/contacts/stores/']]},
+ {id:'rurose',name:'RuRose',place:'Москва и Раменское · ООО «Руроуз»',geo:'РФ',type:'boom',g:'+51%',gn:51.5,metric:'выручка 2025 к 2024 · 384,3 млн ₽',rel:'gir',
+  series:[100.7,123.5,195.2,253.7,384.3],labels:['2021','2022','2023','2024','2025'],unit:'млн ₽',
+  story:'<strong>«Супермаркеты цветов» с прямыми контрактами</strong> у трёх российских тепличных комбинатов. Четыре магазина (два круглосуточные), два оптово-розничных склада. Выручка растёт пятый год подряд, чистая прибыль за 2025 год выросла втрое — до 73,2 млн ₽.',
+  f:{A:1,B:1,C:.5,F:1},fx:{A:'«Зелёный дом», «Ступинская роза», «Линия розы»',B:'два магазина 24/7',C:'похоже, +1 магазин',F:'карта лояльности, рассрочка'},
+  caveat:'Оптово-розничный бизнес: доля розницы в выручке не раскрыта.',
+  src:[['firmoteka','https://firmoteka.ru/7722336468'],['egrul.org','https://egrul.org/fin/report.php?inn=7722336468'],['opt.rurose.ru','https://opt.rurose.ru/']]},
+ {id:'flora',name:'«Флора Парк»',place:'Саратов и Энгельс · ООО «ФП»',geo:'РФ',type:'run',g:'×2,8',gn:47.7,metric:'за два года; за 2025-й +47,7% · 587,7 млн ₽',rel:'gir',
+  series:[212.8,398.1,587.7],labels:['2023','2024','2025'],unit:'млн ₽',
+  story:'<strong>Четыре оптово-розничных цветочных центра</strong> с прямыми поставками из Эквадора, Кении, Нидерландов и России, 10 000+ роз в наличии, замена букета за 24 часа, кэшбэк до 7%. Штат вырос с 72 до 160 человек за год.',
+  f:{A:1,C:.5,F:1},fx:{A:'прямые поставки с плантаций',C:'штат ×2,2 — расширение',F:'кэшбэк 7%, гарантия замены'},
+  caveat:'Прибыль упала с 17,7 до 2,7 млн ₽: рост съел маржу. Велика доля опта.',
+  src:[['firmoteka','https://firmoteka.ru/6455034117'],['egrul.org','https://egrul.org/fin/report.php?inn=6455034117'],['parkflora.ru','https://parkflora.ru/']]},
+ {id:'poppy',name:'Poppy',place:'США',geo:'мир',type:'run',g:'×3',gn:44,metric:'выручка с 2022 года · ≈ +44% в год',rel:'claim',
+  series:[100,144,208,300],labels:['2022','2023','2024','2025'],unit:'индекс, 2022 = 100 (оценка по «утроилась»)',
+  story:'<strong>Свадебная флористика на платформе:</strong> 800–1 100 флористов-фрилансеров, закупка напрямую у ферм, цифровой конструктор сметы. Компания забирает у флориста около 80% «нецветочной» работы. 6 000+ пар, рекомендаций втрое больше.',
+  f:{A:1,C:.5,D:1,F:1},fx:{A:'фермы напрямую, Fair Trade',C:'новые штаты — в планах',D:'конструктор сметы',F:'сарафан: рекомендаций ×3'},
+  caveat:'Абсолютных цифр нет — только «выручка выросла более чем втрое с 2022 года». Промежуточные точки графика — равномерная оценка.',
+  src:[['Forbes','https://www.forbes.com/sites/tanyabenedictoklich/2025/12/19/from-white-house-florals-to-wedding-startup-at-scale-cameron-hardestys-poppy-secures-266m/'],['Tech Funding News','https://techfundingnews.com/poppy-flowers-2-66m-series-a-modernizing-wedding-florals/']]},
+ {id:'igp',name:'IGP · Interflora India',place:'Индия и ОАЭ',geo:'мир',type:'acc',g:'+40%',gn:40,metric:'выручка ≈ ₹500 крор · со слов CEO',rel:'claim',
+  series:[400,500],labels:['2024','2026'],unit:'₹ крор',
+  story:'<strong>Подарки и цветы с доставкой за 30 минут</strong> из своих «тёмных складов» в 30+ городах. Маркетинг — 15% выручки: «бюджет рос на 25–30% в год и стабильно давал рост выручки на 45–50%», — говорит CEO Тарун Джоши.',
+  f:{B:1,C:1,D:1,E:1,G:1},fx:{B:'30 минут, план — 200 складов',C:'страны Залива, ЮВА',D:'онлайн-платформа',E:'персонализированные подарки',G:'15% выручки на маркетинг'},
+  caveat:'Доля цветов в выручке не раскрыта; сам CEO говорит о смещении спроса от цветов к подаркам.',
+  src:[['BW Retail World','https://bwretailworld.com/companies/igp-eyes-wider-india-footprint-global-expansion-revenue-surge-tarun-joshi'],['Best Media Info','https://bestmediainfo.com/mediainfo/mediainfo-marketing/growing-50percent-yoy-rs-400-crore-gifting-platform-igp-splurges-rs-83-crore-on-marketing-6947784']]},
+ {id:'bw',name:'Bloom & Wild',place:'Великобритания и ЕС',geo:'мир',type:'acc',g:'+21%',gn:21,metric:'выручка, апрель–сентябрь 2025',rel:'press',
+  series:[100,105.9,121],labels:['23/24','24/25','1П 25/26'],unit:'индекс роста (оценка по %)',
+  story:'<strong>Букеты в почтовый ящик</strong> и подписка. После двух лет спада — ускорение: бренд-платформа «Care Wildly», подарки кроме цветов (выпечка, корзины), упор на повторные покупки. Прибыльность позволила снова вкладываться в рост.',
+  f:{E:1,F:1,G:1},fx:{E:'выпечка, корзины, наборы',F:'частота заказов',G:'кампания «Care Wildly»'},
+  caveat:'Ускорение, а не взрыв: выручка всё ещё ниже пика 2021 года (£191 млн). Точки графика — индекс по опубликованным процентам.',
+  src:[['Marketing Week','https://www.marketingweek.com/bloom-wild-confidence-brand/'],['Sacra','https://sacra.com/c/bloom-and-wild/']]}
+];
+const REL={gir:['ФНС','gir'],press:['пресса','press'],claim:['со слов','claim']};
+
+/* ---------- cases ---------- */
+function spark(cs){
+  const W=460,H=120,pl=6,pr=56,pt=16,pb=24;
+  const vals=cs.series; const pts=vals.map((v,i)=>v==null?null:[i,v]).filter(Boolean);
+  const max=Math.max(...pts.map(p=>p[1]))*1.08, n=vals.length-1||1;
+  const x=i=>pl+(W-pl-pr)*i/n, y=v=>pt+(H-pt-pb)*(1-v/max);
+  const col=TYPE[cs.type].c;
+  let d=pts.map((p,k)=>(k?'L':'M')+x(p[0]).toFixed(1)+' '+y(p[1]).toFixed(1)).join(' ');
+  let area=d+` L${x(pts[pts.length-1][0])} ${H-pb} L${x(pts[0][0])} ${H-pb} Z`;
+  const gid='g'+cs.id;
+  const last=pts[pts.length-1], first=pts[0];
+  const fmt=v=>v>=100?Math.round(v).toLocaleString('ru-RU'):String(v).replace('.',',');
+  let ticks=vals.map((v,i)=>`<text x="${x(i)}" y="${H-6}" fill="${C.ink3}" font-family="JetBrains Mono,monospace" font-size="10" text-anchor="middle">${cs.labels[i]}</text>`).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Динамика: ${cs.unit}">
+   <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".28"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>
+   <line x1="${pl}" x2="${W-pr}" y1="${H-pb}" y2="${H-pb}" stroke="${C.line}"/>
+   <path d="${area}" fill="url(#${gid})"/><path d="${d}" fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round"/>
+   ${pts.map(p=>`<circle cx="${x(p[0])}" cy="${y(p[1])}" r="2.6" fill="${C.soil}" stroke="${col}" stroke-width="1.5"/>`).join('')}
+   <circle cx="${x(last[0])}" cy="${y(last[1])}" r="5" fill="${col}"/>
+   <text x="${x(last[0])+10}" y="${y(last[1])+4}" fill="${C.ink}" font-family="JetBrains Mono,monospace" font-size="12" font-weight="600">${fmt(last[1])}</text>
+   <text x="${x(first[0])+2}" y="${y(first[1])-9}" fill="${C.ink2}" font-family="JetBrains Mono,monospace" font-size="10.5">${fmt(first[1])}</text>
+   ${ticks}</svg><div class="metric">${cs.unit}${cs.series.includes(null)?' · 2021 — нет данных':''}</div>`;
+}
+(function(){
+  const host=document.getElementById('cases'); let html='', cur='';
+  CASES.forEach(cs=>{
+    if(cs.type!==cur){cur=cs.type;const T=TYPE[cur];html+=`<div class="group-h"><span class="dot" style="background:${T.c};box-shadow:0 0 12px ${T.c}"></span><h3>${T.h}</h3><span class="gl">${T.d}</span></div>`;}
+    const T=TYPE[cs.type], r=REL[cs.rel];
+    const roots=F.filter(f=>cs.f[f[0]]!==undefined && cs.f[f[0]]>0).map(f=>`<li class="${cs.f[f[0]]===1?'ok':''}"><i></i><span><b>${f[1]}</b> — ${cs.fx[f[0]]||f[2]}</span></li>`).join('');
+    html+=`<article class="case" id="${cs.id}" style="--c:${T.c}">
+      <div><div class="big">${cs.g}</div><div class="metric">${cs.metric}</div>
+        <div class="who"><div class="n">${cs.name}</div><div class="p">${cs.place}</div></div>
+        <div class="flags"><span class="rel ${r[1]}">${r[0]}</span><span class="rel claim" style="border-style:solid">${cs.geo}</span></div></div>
+      <div><div class="story">${cs.story}</div><div class="spark">${spark(cs)}</div></div>
+      <div><div class="eyebrow" style="margin-bottom:12px">Корни роста</div><ul class="roots-list">${roots}</ul>
+        <div class="caveat">${cs.caveat}</div>
+        <div class="srcs">${cs.src.map(s=>`<a href="${s[1]}">${s[0]}</a>`).join('')}</div></div>
+    </article>`;
+  });
+  host.innerHTML=html;
+})();
+
+/* ---------- roots matrix ---------- */
+(function(){
+  const svg=document.getElementById('roots');
+  const W=1180,top=96,rowH=58,left=230,right=30,H=top+F.length*rowH+30;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const colW=(W-left-right)/CASES.length, cx=i=>left+colW*(i+.5);
+  let s='';
+  // ground
+  s+=`<line x1="0" x2="${W}" y1="${top-24}" y2="${top-24}" stroke="${C.ink3}" stroke-dasharray="2 5"/>`;
+  s+=`<text x="0" y="${top-32}" fill="${C.ink3}" font-family="JetBrains Mono,monospace" font-size="11">ЗЕМЛЯ</text>`;
+  CASES.forEach((cs,i)=>{
+    const col=TYPE[cs.type].c, h=Math.max(10,cs.gn*0.34);
+    s+=`<path d="M${cx(i)} ${top-24} C ${cx(i)-3} ${top-24-h*.5}, ${cx(i)+3} ${top-24-h*.8}, ${cx(i)} ${top-24-h}" stroke="${col}" stroke-width="2" fill="none"/>`;
+    s+=`<circle cx="${cx(i)}" cy="${top-24-h}" r="5" fill="${col}"/>`;
+    s+=`<text x="${cx(i)+9}" y="${top-24-h+4}" fill="${C.ink2}" font-family="JetBrains Mono,monospace" font-size="10.5">${cs.g}</text>`;
+    // name label below ground? place at top? use bottom
+    s+=`<text x="${cx(i)}" y="${H-6}" fill="${C.ink}" font-family="Onest,sans-serif" font-size="12.5" font-weight="500" text-anchor="middle">${cs.name.replace('IGP · Interflora India','IGP')}</text>`;
+    // root trunk
+    const rows=F.map((f,k)=>cs.f[f[0]]>0?k:-1).filter(k=>k>=0);
+    const last=rows.length?Math.max(...rows):0;
+    let d=`M${cx(i)} ${top-24}`, py=top-24;
+    for(let k=0;k<=last;k++){const yy=top+k*rowH+rowH/2;const wob=(k%2?1:-1)*6;d+=` C ${cx(i)+wob} ${py+(yy-py)*.4}, ${cx(i)-wob} ${py+(yy-py)*.7}, ${cx(i)} ${yy}`;py=yy;}
+    s+=`<path d="${d}" stroke="${col}" stroke-opacity=".35" stroke-width="1.4" fill="none"/>`;
+  });
+  F.forEach((f,k)=>{
+    const yy=top+k*rowH+rowH/2; const cnt=CASES.filter(c=>c.f[f[0]]>0).length;
+    s+=`<text x="0" y="${yy-3}" fill="${C.ink}" font-family="Onest,sans-serif" font-size="15" font-weight="500">${f[1]}</text>`;
+    s+=`<text x="0" y="${yy+15}" fill="${C.ink3}" font-family="Onest,sans-serif" font-size="11.5">${f[2]}</text>`;
+    s+=`<text x="${left-22}" y="${yy+6}" fill="${cnt>=7?C.pollen:C.ink2}" font-family="Unbounded,sans-serif" font-size="${cnt>=7?20:15}" font-weight="${cnt>=7?500:300}" text-anchor="end">${cnt}</text>`;
+    s+=`<line x1="${left}" x2="${W-right}" y1="${yy}" y2="${yy}" stroke="${C.line}" stroke-opacity=".6"/>`;
+    CASES.forEach((cs,i)=>{
+      const v=cs.f[f[0]]; if(!(v>0))return; const col=TYPE[cs.type].c;
+      s+= v===1?`<circle cx="${cx(i)}" cy="${yy}" r="8" fill="${col}" opacity=".18"/><circle cx="${cx(i)}" cy="${yy}" r="5" fill="${col}"><title>${cs.name}: ${f[1]} — подтверждено</title></circle>`
+               :`<circle cx="${cx(i)}" cy="${yy}" r="5" fill="${C.soil}" stroke="${col}" stroke-width="1.5"><title>${cs.name}: ${f[1]} — наш вывод</title></circle>`;
+    });
+  });
+  svg.innerHTML=s;
+})();
+
+/* ---------- profit scatter ---------- */
+(function(){
+  const P=[['«Жарден» (ООО)',56,31.0],['RuRose',51.5,19.0],['AzaliaNow',90,-22.5],['«Бери Дари»',102,9.3],['«Флора Парк»',47.7,0.5]];
+  const svg=document.getElementById('scatter');
+  const W=640,H=420,l=56,r=24,t=24,b=48, x0=40,x1=110,y0=-30,y1=40;
+  const X=v=>l+(W-l-r)*(v-x0)/(x1-x0), Y=v=>t+(H-t-b)*(1-(v-y0)/(y1-y0));
+  let s='';
+  [-30,-20,-10,0,10,20,30,40].forEach(v=>{s+=`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="${v===0?C.ink3:C.line}" stroke-opacity="${v===0?.9:.5}" ${v===0?'':'stroke-dasharray="2 4"'}/><text x="${l-10}" y="${Y(v)+4}" fill="${C.ink3}" font-family="JetBrains Mono,monospace" font-size="11" text-anchor="end">${v>0?'+':''}${v}%</text>`;});
+  [40,60,80,100].forEach(v=>{s+=`<text x="${X(v)}" y="${H-b+22}" fill="${C.ink3}" font-family="JetBrains Mono,monospace" font-size="11" text-anchor="middle">+${v}%</text>`;});
+  s+=`<text x="${W-r}" y="${H-6}" fill="${C.ink2}" font-family="Onest,sans-serif" font-size="12" text-anchor="end">рост выручки 2025 →</text>`;
+  s+=`<text x="${l}" y="${t-8}" fill="${C.ink2}" font-family="Onest,sans-serif" font-size="12">↑ чистая прибыль / выручка</text>`;
+  s+=`<rect x="${l}" y="${Y(0)}" width="${W-l-r}" height="${Y(y0)-Y(0)}" fill="${C.wilt}" opacity=".08"/>`;
+  P.forEach(p=>{const good=p[2]>=15,bad=p[2]<0;const col=bad?C.wilt:good?C.pollen:C.peony;
+    s+=`<circle cx="${X(p[1])}" cy="${Y(p[2])}" r="${good?11:8}" fill="${col}" opacity=".2"/><circle cx="${X(p[1])}" cy="${Y(p[2])}" r="6" fill="${col}"/>`;
+    const anchor=p[1]>95?'end':'start', dx=p[1]>95?-14:12;
+    s+=`<text x="${X(p[1])+dx}" y="${Y(p[2])-8}" fill="${C.ink}" font-family="Onest,sans-serif" font-size="13" font-weight="500" text-anchor="${anchor}">${p[0]}</text><text x="${X(p[1])+dx}" y="${Y(p[2])+8}" fill="${C.ink3}" font-family="JetBrains Mono,monospace" font-size="10.5" text-anchor="${anchor}">+${String(p[1]).replace('.',',')}% · ${p[2]>0?'+':''}${String(p[2]).replace('.',',')}%</text>`;});
+  s+=`<text x="${X(42)}" y="${Y(-26)}" fill="${C.ink3}" font-family="JetBrains Mono,monospace" font-size="10.5">зона убытка</text>`;
+  svg.innerHTML=s;
+})();
+
+/* ---------- sources ---------- */
+(function(){
+  const extra=[['Коммерсантъ — рынок цветов 2025 (Эвотор)','https://www.kommersant.ru/doc/8271080'],['rb.ru — закрытие магазинов и рост продаж','https://rb.ru/news/v-krupnyh-gorodah-zakrylos-do-25-cvetochnyh-magazinov-za-2025-god-pri-etom-prodazhi-vyrosli-na-12/'],['E1.ru — Flowwow: 24 млрд ₽ за 2025 год','https://www.e1.ru/text/business/2026/05/03/76363013/'],['firmoteka — рейтинг ОКВЭД 47.76.1','https://firmoteka.ru/rating-by-revenue-47_76_1'],['firmoteka — ООО «ФФТ», Пенза','https://firmoteka.ru/5834113138'],['UKTN — Freddie\'s Flowers','https://www.uktech.news/tech-hubs/london/freddies-flowers-cuts-26-of-staff-after-revenues-fall-again-20241211'],['BusinessWire — 1-800-Flowers FY2025','https://www.businesswire.com/news/home/20250904202543/en/1-800-FLOWERS.COM-Inc.-Reports-Fiscal-2025-Fourth-Quarter-and-Year-End-Results'],['VIA Empresa — Colvin','https://www.viaempresa.cat/es/empresa/mejor-startup-ano-despedir-mitad-plantilla-este-es-presente-colvin_2212950_102.html'],['Modern Retail — The Bouqs Co.','https://www.modernretail.co/operations/bouqs-launches-5m-crowdfunding-raise-to-support-future-store-openings/']];
+  const all=[]; CASES.forEach(c=>c.src.forEach(s=>all.push([c.name+' — '+s[0],s[1]]))); extra.forEach(e=>all.push(e));
+  document.getElementById('srclist').innerHTML=all.map(s=>`<li><a href="${s[1]}">${s[0]}</a></li>`).join('');
+})();
+
+/* ---------- garden canvas ---------- */
+(function(){
+  const cv=document.getElementById('garden'), ctx=cv.getContext('2d');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W,H,dpr,ground,stems=[],embers=[],mx=-1,t0=performance.now();
+  function layout(){
+    dpr=Math.min(2,window.devicePixelRatio||1); W=cv.clientWidth; H=cv.clientHeight;
+    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    ground=H*.78;
+    const narrow=W<700, left=narrow?W*.08:W*.36, span=(narrow?W*.86:W*.6);
+    const maxH=ground-(narrow?H*.40:H*.14);
+    stems=CASES.map((c,i)=>({c,x:left+span*(i+.5)/CASES.length,h:Math.min(1,Math.sqrt(c.gn/129))*maxH,col:TYPE[c.type].c,seed:i*1.7,delay:i*.12}));
+    if(!embers.length){for(let i=0;i<558;i++)embers.push({x:Math.random(),y:Math.random(),v:.00012+Math.random()*.00035,r:.6+Math.random()*1.3,p:Math.random()*6.28});}
+  }
+  function ease(x){return 1-Math.pow(1-Math.min(1,Math.max(0,x)),3)}
+  function draw(now){
+    const t=reduce?99:(now-t0)/1000;
+    ctx.clearRect(0,0,W,H);
+    // sky glow
+    const g=ctx.createRadialGradient(W*.62,ground,10,W*.62,ground,W*.7);
+    g.addColorStop(0,'rgba(255,123,165,.10)');g.addColorStop(1,'rgba(19,14,19,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    // underground
+    const ug=ctx.createLinearGradient(0,ground,0,H);ug.addColorStop(0,'#1E161D');ug.addColorStop(1,'#130E13');ctx.fillStyle=ug;ctx.fillRect(0,ground,W,H-ground);
+    // embers (data: 1 = 1 млн ₽)
+    embers.forEach(e=>{
+      if(!reduce){e.y-=e.v;if(e.y<0){e.y=1;e.x=Math.random();}}
+      const yy=e.y*ground, xx=e.x*W+Math.sin(t*.4+e.p)*8;
+      const a=.15+.45*Math.max(0,Math.sin(t*.8+e.p))*(e.y);
+      ctx.fillStyle=`rgba(242,196,109,${a.toFixed(3)})`;ctx.beginPath();ctx.arc(xx,yy,e.r,0,6.283);ctx.fill();
+    });
+    // ground line
+    ctx.strokeStyle='rgba(201,185,194,.35)';ctx.setLineDash([2,6]);ctx.beginPath();ctx.moveTo(0,ground);ctx.lineTo(W,ground);ctx.stroke();ctx.setLineDash([]);
+    stems.forEach(s=>{
+      const k=ease((t-s.delay)/2.6), h=s.h*k;
+      const lean=(mx>=0?(mx-s.x)/W*14:0)+Math.sin(t*.7+s.seed)*3;
+      // roots
+      ctx.strokeStyle=s.col;ctx.globalAlpha=.22;ctx.lineWidth=1;
+      for(let r=0;r<4;r++){ctx.beginPath();ctx.moveTo(s.x,ground);const rx=s.x+(r-1.5)*14*k,ry=ground+(20+r*9)*k*(1+s.c.gn/200);ctx.quadraticCurveTo(s.x+(r-1.5)*4,ground+12,rx,ry);ctx.stroke();}
+      ctx.globalAlpha=1;
+      // stem
+      const tx=s.x+lean, ty=ground-h;
+      ctx.strokeStyle=s.col;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(s.x,ground);ctx.bezierCurveTo(s.x-4,ground-h*.4,tx+4,ground-h*.75,tx,ty);ctx.stroke();
+      // leaf
+      if(h>40){ctx.fillStyle=s.col;ctx.globalAlpha=.55;ctx.beginPath();const ly=ground-h*.42,lx=s.x+lean*.4;ctx.ellipse(lx+9,ly,10,3.5,-.6,0,6.283);ctx.fill();ctx.globalAlpha=1;}
+      // bloom
+      const b=ease((t-s.delay-2.1)/1.2), pr=(6+s.c.gn/12)*b;
+      if(b>0){
+        const glow=ctx.createRadialGradient(tx,ty,0,tx,ty,pr*3.2);glow.addColorStop(0,s.col+'66');glow.addColorStop(1,s.col+'00');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(tx,ty,pr*3.2,0,6.283);ctx.fill();
+        ctx.fillStyle=s.col;for(let p=0;p<6;p++){const a=p/6*6.283+t*.15+s.seed;ctx.globalAlpha=.85;ctx.beginPath();ctx.ellipse(tx+Math.cos(a)*pr*.55,ty+Math.sin(a)*pr*.55,pr*.55,pr*.3,a,0,6.283);ctx.fill();}
+        ctx.globalAlpha=1;ctx.fillStyle='#130E13';ctx.beginPath();ctx.arc(tx,ty,pr*.28,0,6.283);ctx.fill();
+        ctx.fillStyle='rgba(243,234,238,'+(.9*b)+')';ctx.font='500 12px "JetBrains Mono",monospace';ctx.textAlign='center';ctx.fillText(s.c.g,tx,ty-pr-10);
+      }
+      ctx.fillStyle='rgba(201,185,194,.8)';ctx.font='500 11px Onest,sans-serif';ctx.textAlign='center';
+      if(W>=700){ctx.save();ctx.translate(s.x,ground+18);ctx.fillText(s.c.name.replace('IGP · Interflora India','IGP').replace(/[«»]/g,''),0,0);ctx.restore();}
+    });
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  addEventListener('resize',()=>{layout();if(reduce)draw(0)});
+  cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;});
+  cv.parentElement.addEventListener('pointerleave',()=>mx=-1);
+  cv.addEventListener('click',e=>{const r=cv.getBoundingClientRect(),x=e.clientX-r.left;let best=null,bd=40;stems.forEach(s=>{const d=Math.abs(s.x-x);if(d<bd){bd=d;best=s}});if(best)document.getElementById(best.c.id).scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});});
+  cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect(),x=e.clientX-r.left;cv.style.cursor=stems.some(s=>Math.abs(s.x-x)<40)?'pointer':'default';});
+  layout();
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>requestAnimationFrame(draw));
+})();
+</script>
+</body></html>
